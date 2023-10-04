@@ -36,7 +36,7 @@ EthernetPacket_eCPRI::EthernetPacket_eCPRI(std::string& packetData) : EthernetPa
 
 }
 
-std::string EthernetPacket_eCPRI::getProtocolRevision(){
+std::string EthernetPacket_eCPRI::getProtocolVersion(){
     return protocolRevision;
 }
 
@@ -44,7 +44,7 @@ std::string EthernetPacket_eCPRI::getConcatenationIndicator(){
     return concatenationIndicator;
 }
 
-std::string EthernetPacket_eCPRI::getMassegeType(){
+std::string EthernetPacket_eCPRI::getMessageType(){
     return msgType.fieldData;
 }
 

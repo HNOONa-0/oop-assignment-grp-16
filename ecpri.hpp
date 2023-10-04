@@ -13,9 +13,9 @@ class EthernetPacket_eCPRI : public EthernetPacket {
 
     public:
         EthernetPacket_eCPRI(std::string& packetData);
-        std::string getProtocolRevision();
+        std::string getProtocolVersion();
         std::string getConcatenationIndicator();
-        std::string getMassegeType();
+        std::string getMessageType();
         std::string getPayloadSize();
         std::string getRtcId();
         std::string getSequenceId();
