@@ -10,7 +10,7 @@ typedef struct PacketField{
 }PacketField;
 
 class EthernetPacket {
-    private:
+    protected:
         PacketField wholePacket;
 
         // packet fields in order

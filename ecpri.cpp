@@ -3,53 +3,63 @@
 #include"packet.hpp"
 #include"ecpri.hpp"
 
-static int get_LSB_from_str_hex(unsigned char hex){
+static std::string get_LSB_from_str_hex(unsigned char hex){
 // TODO: create a funciton that get the value of the LSB of a hex character
 
+    return std::string();
 }
 
 EthernetPacket_eCPRI::EthernetPacket_eCPRI(std::string& packetData) : EthernetPacket(packetData){
     int current_index = 0;
 
-        // std::string protocolRevision;
-        // std::string concatenationIndicator;
-        // PacketField msgType;
-        // PacketField payloadSize;
-        // PacketField RtcId;
-        // PacketField sequenceId;
-        // PacketField realTimeCtrlData;
+    protocolRevision = payload.fieldData[current_index++];
+    concatenationIndicator = get_LSB_from_str_hex(payload.fieldData[current_index++]);
 
-    protocolRevision = 
+    msgType.sizeInBytes = 1;
+    msgType.fieldData = payload.fieldData.substr(current_index, msgType.sizeInBytes * 2);
+    current_index += msgType.sizeInBytes * 2;
 
-    preamble.sizeInBytes = 8;
-    preamble.fieldData = wholePacket.fieldData.substr(current_index, preamble.sizeInBytes * 2);
-    current_index += preamble.sizeInBytes * 2;
+    payloadSize.sizeInBytes = 2;
+    payloadSize.fieldData = payload.fieldData.substr(current_index, payloadSize.sizeInBytes * 2);
+    current_index += payloadSize.sizeInBytes * 2;
+
+    RtcId.sizeInBytes = 2;
+    RtcId.fieldData = payload.fieldData.substr(current_index, RtcId.sizeInBytes * 2);
+    current_index += RtcId.sizeInBytes * 2;
+
+    sequenceId.sizeInBytes = 2;
+    sequenceId.fieldData = payload.fieldData.substr(current_index, sequenceId.sizeInBytes * 2);
+    current_index += sequenceId.sizeInBytes * 2;
+
+    realTimeCtrlData.sizeInBytes = payload.sizeInBytes - 8;
+    realTimeCtrlData.fieldData = payload.fieldData.substr(current_index, realTimeCtrlData.sizeInBytes * 2);
+
 }
 
 std::string EthernetPacket_eCPRI::getProtocolRevision(){
-
+    return protocolRevision;
 }
 
 std::string EthernetPacket_eCPRI::getConcatenationIndicator(){
-
+    return concatenationIndicator;
 }
 
 std::string EthernetPacket_eCPRI::getMassegeType(){
-
+    return msgType.fieldData;
 }
 
 std::string EthernetPacket_eCPRI::getPayloadSize(){
-
+    return payloadSize.fieldData;
 }
 
 std::string EthernetPacket_eCPRI::getRtcId(){
-
+    return RtcId.fieldData;
 }
 
 std::string EthernetPacket_eCPRI::getSequenceId(){
-
+    return sequenceId.fieldData;
 }
 
 std::string EthernetPacket_eCPRI::getRealTimeCtrlData(){
-
+    return realTimeCtrlData.fieldData;
 }

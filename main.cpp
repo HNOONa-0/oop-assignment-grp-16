@@ -1,6 +1,7 @@
 #include<iostream>
 
 #include "packet.hpp"
+#include "ecpri.hpp"
 
 int main(){
 
@@ -9,7 +10,7 @@ int main(){
     
     std::string ethernetPacketLine;
     while(std::cin >> ethernetPacketLine){
-        EthernetPacket ethernetPacket(ethernetPacketLine);
+        EthernetPacket ethernetPacket_(ethernetPacketLine);
 
         std::cout<<ethernetPacketLine<<std::endl;
         std::cout<<ethernetPacket.getPreamble()<<std::endl;
