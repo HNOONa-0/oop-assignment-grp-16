@@ -79,3 +79,7 @@ int EthernetPacket::is_eCPRI(){
     }
     return false;
 }
+
+std::string EthernetPacket::getWholePacket() {
+    return wholePacket.fieldData;
+}

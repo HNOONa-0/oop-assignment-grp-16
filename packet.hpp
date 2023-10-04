@@ -24,6 +24,7 @@ class EthernetPacket {
     public:
         EthernetPacket();
         EthernetPacket(std::string& packetData);
+        std::string getWholePacket();
         std::string getPreamble();
         std::string getDestinationAddress();
         std::string getSourceAddress();

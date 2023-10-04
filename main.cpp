@@ -2,6 +2,9 @@
 
 #include "packet.hpp"
 #include "ecpri.hpp"
+#include "packetprinter.cpp"    
+
+int PacketPrinter::current_packet_num = 0;
 
 int main(){
 
@@ -11,15 +14,10 @@ int main(){
     std::string ethernetPacketLine;
     while(std::cin >> ethernetPacketLine){
         EthernetPacket ethernetPacket(ethernetPacketLine);
+        PacketPrinter printer;
 
-        std::cout<<ethernetPacketLine<<std::endl;
-        std::cout<<ethernetPacket.getPreamble()<<std::endl;
-        std::cout<<ethernetPacket.getDestinationAddress()<<std::endl;
-        std::cout<<ethernetPacket.getSourceAddress()<<std::endl;
-        std::cout<<ethernetPacket.getType()<<std::endl;
-        std::cout<<ethernetPacket.getPayload()<<std::endl;
-        std::cout<<ethernetPacket.getCRC()<<std::endl;
-        
+        printer.printRawEthernetPacket(ethernetPacket);
+
         std::cout<<std::endl;
     }
 }
