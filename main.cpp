@@ -1,10 +1,7 @@
 #include<iostream>
 
-#include "packet.hpp"
-#include "ecpri.hpp"
-#include "packetprinter.cpp"    
-
-int PacketPrinter::current_packet_num = 0;
+#include "abstractpacket.hpp"
+#include "packetprinter.hpp"    
 
 int main(){
 
@@ -13,11 +10,10 @@ int main(){
     
     std::string ethernetPacketLine;
     while(std::cin >> ethernetPacketLine){
-        EthernetPacket ethernetPacket(ethernetPacketLine);
+
+        AbstractPacket* packet = AbstractPacket::createEthernetPacket(ethernetPacketLine);
         PacketPrinter printer;
-
-        printer.printRawEthernetPacket(ethernetPacket);
-
-        std::cout<<std::endl;
+        printer.printPacketInfo(packet);
+        delete packet;
     }
 }

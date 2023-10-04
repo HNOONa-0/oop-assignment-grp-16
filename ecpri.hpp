@@ -1,7 +1,7 @@
 #ifndef _ECPRI_HPP_
 #define _ECPRI_HPP_
 
-class EthernetPacket_eCPRI : public EthernetPacket {
+class EthernetPacket_eCPRI : public AbstractPacket {
     private:
         std::string protocolRevision;
         std::string concatenationIndicator;
