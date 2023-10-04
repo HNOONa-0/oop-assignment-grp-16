@@ -10,7 +10,7 @@ int main(){
     
     std::string ethernetPacketLine;
     while(std::cin >> ethernetPacketLine){
-        EthernetPacket ethernetPacket_(ethernetPacketLine);
+        EthernetPacket ethernetPacket(ethernetPacketLine);
 
         std::cout<<ethernetPacketLine<<std::endl;
         std::cout<<ethernetPacket.getPreamble()<<std::endl;
