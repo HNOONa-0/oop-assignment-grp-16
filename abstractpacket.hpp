@@ -1,6 +1,8 @@
 #ifndef _ABSTRACT_PACKET_H_
 #define _ABSTRACT_PACKET_H_
 
+class Visitor;
+
 typedef struct PacketField{
     int sizeInBytes;
     std::string fieldData;
@@ -29,6 +31,8 @@ class AbstractPacket {
         virtual std::string getPayload();
         virtual std::string getCRC();
         virtual int is_eCPRI();
+        virtual void accept(Visitor* visitor) = 0;
+
         static AbstractPacket* createEthernetPacket(std::string packetStr);
 };
 

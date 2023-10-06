@@ -1,13 +1,9 @@
 #include<iostream>
 
-#include"abstractpacket.hpp"
-#include "rawpacket.hpp"
+#include "helpers.hpp"
 #include"ecpri.hpp"
+#include "visitor.hpp"
 
-static std::string get_LSB_from_str_hex(unsigned char hex){
-// TODO: create a funciton that get the value of the LSB of a hex character
-    return std::string();
-}
 
 EthernetPacket_eCPRI::EthernetPacket_eCPRI(std::string& packetData) : AbstractPacket(packetData){
     int current_index = 0;
@@ -62,4 +58,8 @@ std::string EthernetPacket_eCPRI::getSequenceId(){
 
 std::string EthernetPacket_eCPRI::getRealTimeCtrlData(){
     return realTimeCtrlData.fieldData;
+}
+
+void EthernetPacket_eCPRI::accept(Visitor* visitor) {
+    visitor->visitEcpriEthernetPacket(this);
 }
