@@ -4,7 +4,7 @@
 
 compile and link program files using the following command
 ``` 
-g++ main.cpp rawpacket.cpp ecpri.cpp abstractpacket.cpp packetprinter.cpp -o app
+g++ main.cpp rawpacket.cpp ecpri.cpp abstractpacket.cpp packetprinter.cpp helpers.cpp -o app
 ```
 
 if you are on ```Linux``` or ```bash``` use

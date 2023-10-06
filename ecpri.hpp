@@ -24,7 +24,6 @@ class EthernetPacket_eCPRI : public AbstractPacket {
         std::string getRtcId();
         std::string getSequenceId();
         std::string getRealTimeCtrlData();
-
         void accept(Visitor* visitor) override;
 
 };

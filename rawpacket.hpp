@@ -2,8 +2,8 @@
 #define _PACKET_HPP_
 
 #include "abstractpacket.hpp"
-
-class visitor;      //forward declaration to break the circular dependency
+// forward declaration to break the circular dependency
+class visitor;
 
 class EthernetPacket : public AbstractPacket {
     public:

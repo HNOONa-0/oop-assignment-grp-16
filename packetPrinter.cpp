@@ -3,10 +3,10 @@
 #include "packetprinter.hpp"
 
 using namespace std;
-
+// static variable used to number the packets
 int PacketPrinter::current_packet_num = 0;
 
-
+// print rawEthernet packet as per discription
 void PacketPrinter::visitRawEthernetPacket(EthernetPacket* packet){
     cout << "Packet # " << current_packet_num++ << ":" << endl;
     cout << packet->getWholePacket() << endl;
@@ -19,7 +19,7 @@ void PacketPrinter::visitRawEthernetPacket(EthernetPacket* packet){
     cout << "***************************************************************************************" << endl;
     cout << endl;
 }
-
+// print ecpri packet as per discription
 void PacketPrinter::visitEcpriEthernetPacket(EthernetPacket_eCPRI* packet){
     cout << "Packet # " << current_packet_num++ << ":" << endl;
     cout << packet->getWholePacket() << endl;

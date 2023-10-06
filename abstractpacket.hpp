@@ -1,8 +1,7 @@
 #ifndef _ABSTRACT_PACKET_H_
 #define _ABSTRACT_PACKET_H_
-
+// declare visitor so AbstractPacket can use it
 class Visitor;
-
 typedef struct PacketField{
     int sizeInBytes;
     std::string fieldData;
@@ -13,6 +12,7 @@ class AbstractPacket {
         PacketField wholePacket;
 
         // packet fields in order
+        // contains fields common to both ecpri and rawEthernet
         PacketField preamble;
         PacketField destinationAddress;
         PacketField sourceAddress;

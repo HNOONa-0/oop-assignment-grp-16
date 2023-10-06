@@ -26,7 +26,7 @@ AbstractPacket::AbstractPacket(std::string& packetData) {
     sourceAddress.sizeInBytes = 6;
     type.sizeInBytes = 2;
     wholePacket.fieldData = packetData;
-
+    // we will use current index to correctly decide on the start of each field 
     int current_index = 0;
 
  
@@ -45,6 +45,8 @@ AbstractPacket::AbstractPacket(std::string& packetData) {
     type.fieldData = wholePacket.fieldData.substr(current_index, type.sizeInBytes * 2);
     current_index += type.sizeInBytes * 2;
 
+    // the packet size could change and so does the size of data field (defined here as payload)
+    // this math correcly calculates the size of data field
     payload.sizeInBytes = wholePacket.sizeInBytes - type.sizeInBytes - sourceAddress.sizeInBytes 
         - destinationAddress.sizeInBytes - preamble.sizeInBytes - 4;
     payload.fieldData = wholePacket.fieldData.substr(current_index, payload.sizeInBytes * 2);
@@ -53,7 +55,7 @@ AbstractPacket::AbstractPacket(std::string& packetData) {
     CRC.fieldData = wholePacket.fieldData.substr(current_index, CRC.sizeInBytes * 2);
 
 }
-
+// getters for each field
 std::string AbstractPacket::getPreamble(){
     return preamble.fieldData;
 }
@@ -91,7 +93,7 @@ std::string AbstractPacket::getWholePacket() {
 
 #include "rawpacket.hpp"
 #include "ecpri.hpp"
-
+// check type of packet and return corresponding packet
 AbstractPacket* AbstractPacket::createEthernetPacket(std::string packetStr){
     if(packetStr.substr(40, 4) == ECPRI_TYPE_VALUE){
         return new EthernetPacket_eCPRI(packetStr);
