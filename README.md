@@ -21,3 +21,7 @@ if you are on windows command prompt use
 
 * the input file to the program is ```input.in``` file
 * output file of the program is ```output.out``` file
+
+### UML Diagram of code design:
+
+![UML diagram](https://github.com/HNOONa-0/oop-assignment-grp-16/assets/83380553/e9a27563-408f-45e6-a054-e0147707f303)
