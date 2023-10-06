@@ -16,3 +16,8 @@ if you are on windows command prompt use
 ```
 .\app.exe
 ```
+
+### Note that
+
+* the input file to the program is ```input.in``` file
+* output file of the program is ```output.out``` file
