@@ -10,8 +10,8 @@ class PacketPrinter: public Visitor{
         static int current_packet_num;
 
     public:
-        void visitRawEthernetPacket(EthernetPacket* packet);
-        void visitEcpriEthernetPacket(EthernetPacket_eCPRI* packet);
+        void visitRawEthernetPacket(EthernetPacket* packet) override;
+        void visitEcpriEthernetPacket(EthernetPacket_eCPRI* packet) override;
 };
 
 #endif
