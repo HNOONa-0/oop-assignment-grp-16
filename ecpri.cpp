@@ -4,10 +4,6 @@
 #include"ecpri.hpp"
 #include "visitor.hpp"
 
-static std::string get_LSB_from_str_hex(unsigned char hex){
-// TODO: create a funciton that get the value of the LSB of a hex character
-    return std::string();
-}
 
 EthernetPacket_eCPRI::EthernetPacket_eCPRI(std::string& packetData) : AbstractPacket(packetData){
     int current_index = 0;

@@ -11,7 +11,7 @@ void PacketPrinter::visitRawEthernetPacket(EthernetPacket* packet){
     cout << "Packet # " << current_packet_num++ << ":" << endl;
     cout << packet->getWholePacket() << endl;
     cout << "CRC: " << packet->getCRC() << endl;
-    cout << "Destinationn Address: " << packet->getDestinationAddress() << endl;
+    cout << "Destination Address: " << packet->getDestinationAddress() << endl;
     cout << "Source Address: " << packet->getSourceAddress() << endl;
     cout << "Type: " << packet->getType() << endl;
     cout << "Payload: " << packet->getPayload() << endl;
@@ -25,7 +25,7 @@ void PacketPrinter::visitEcpriEthernetPacket(EthernetPacket_eCPRI* packet){
     cout << packet->getWholePacket() << endl;
     cout << "CRC: " << packet->getCRC() << endl;
     cout << "Concatenation Indicator: " << packet->getConcatenationIndicator() << endl;
-    cout << "Destinationn Address: " << packet->getDestinationAddress() << endl;
+    cout << "Destination Address: " << packet->getDestinationAddress() << endl;
     cout << "Message Type: " << packet->getMessageType() << endl;
     cout << "Payload Size: " << packet->getPayloadSize() << endl;
     cout << "Protocol Version: " << packet->getProtocolVersion() << endl;
