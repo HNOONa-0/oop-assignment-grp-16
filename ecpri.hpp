@@ -1,6 +1,10 @@
 #ifndef _ECPRI_HPP_
 #define _ECPRI_HPP_
 
+#include "abstractpacket.hpp"
+
+class visitor;      //forward declaration to break the circular dependency
+
 class EthernetPacket_eCPRI : public AbstractPacket {
     private:
         std::string protocolRevision;
@@ -20,6 +24,8 @@ class EthernetPacket_eCPRI : public AbstractPacket {
         std::string getRtcId();
         std::string getSequenceId();
         std::string getRealTimeCtrlData();
+
+        void accept(Visitor* visitor) override;
 
 };
 

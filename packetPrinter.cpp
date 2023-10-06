@@ -7,16 +7,7 @@ using namespace std;
 int PacketPrinter::current_packet_num = 0;
 
 
-void PacketPrinter::printPacketInfo(AbstractPacket* packet) {
-    if(packet->is_eCPRI()){
-        printPacketEcpriInfo(dynamic_cast<EthernetPacket_eCPRI*>(packet));                
-    }
-    else{
-        printPacketRawInfo(dynamic_cast<EthernetPacket*>(packet));
-    }
-}
-
-void PacketPrinter::printPacketRawInfo(EthernetPacket* packet){
+void PacketPrinter::visitRawEthernetPacket(EthernetPacket* packet){
     cout << "Packet # " << current_packet_num++ << ":" << endl;
     cout << packet->getWholePacket() << endl;
     cout << "CRC: " << packet->getCRC() << endl;
@@ -30,7 +21,7 @@ void PacketPrinter::printPacketRawInfo(EthernetPacket* packet){
     cout << endl;
 }
 
-void PacketPrinter::printPacketEcpriInfo(EthernetPacket_eCPRI* packet){
+void PacketPrinter::visitEcpriEthernetPacket(EthernetPacket_eCPRI* packet){
     cout << "Packet # " << current_packet_num++ << ":" << endl;
     cout << packet->getWholePacket() << endl;
     cout << "CRC: " << packet->getCRC() << endl;

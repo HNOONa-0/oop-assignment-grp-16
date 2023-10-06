@@ -1,7 +1,7 @@
 #include<iostream>
 
 #include "abstractpacket.hpp"
-#include "packetprinter.hpp"    
+#include "packetprinter.hpp"
 
 int main(){
 
@@ -9,11 +9,12 @@ int main(){
     freopen("output.out", "w", stdout);
     
     std::string ethernetPacketLine;
+    Visitor* printVisitor = new PacketPrinter();
     while(std::cin >> ethernetPacketLine){
 
         AbstractPacket* packet = AbstractPacket::createEthernetPacket(ethernetPacketLine);
-        PacketPrinter printer;
-        printer.printPacketInfo(packet);
+        packet->accept(printVisitor);
         delete packet;
     }
+    delete printVisitor;
 }

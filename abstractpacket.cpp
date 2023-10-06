@@ -2,8 +2,7 @@
 #include<iostream>
 
 #include "abstractpacket.hpp"
-#include "rawpacket.hpp"
-#include "ecpri.hpp"
+#include "visitor.hpp"
 
 #define MAX_ETHERNET_PACKET_SIZE_IN_BYTES   1526
 #define ECPRI_TYPE_VALUE               "AEFE"
@@ -89,6 +88,9 @@ int AbstractPacket::is_eCPRI(){
 std::string AbstractPacket::getWholePacket() {
     return wholePacket.fieldData;
 }
+
+#include "rawpacket.hpp"
+#include "ecpri.hpp"
 
 AbstractPacket* AbstractPacket::createEthernetPacket(std::string packetStr){
     if(packetStr.substr(40, 4) == ECPRI_TYPE_VALUE){

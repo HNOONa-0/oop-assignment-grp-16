@@ -2,11 +2,14 @@
 
 #include<iostream>
 
-#include "abstractpacket.hpp"
-#include"rawpacket.hpp"
-#include "ecpri.hpp"
+#include "rawpacket.hpp"
+#include "visitor.hpp"
 
 
 EthernetPacket::EthernetPacket(std::string packet) : AbstractPacket(packet){
 
+}
+
+void EthernetPacket::accept(Visitor* visitor) {
+    visitor->visitRawEthernetPacket(this);
 }
